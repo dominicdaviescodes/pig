@@ -7,8 +7,14 @@ const ending = 'ay';
 // Event Listeners
 textInput.addEventListener('keyup', (e) => {
   const input = e.target.value;
-  let output = '';
+  // let output = '';
   console.log(input);
+  const words = input.split(' ');
+  const output = words.map((word) => convertToPigLatin(word)).join(' ');
+  textOutput.innerText = output;
+});
+
+const convertToPigLatin = (input) => {
   // starts with vowel? add ending
   if (vowels.includes(input[0])) {
     output = input + ending;
@@ -22,5 +28,5 @@ textInput.addEventListener('keyup', (e) => {
     }
     output = input.substring(consonants.length) + consonants + ending;
   }
-  textOutput.innerText = output;
-});
+  return output;
+};
